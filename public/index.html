@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+    <title>Socket.IO chat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font: 13px Helvetica, Arial;
+        }
+
+        form {
+            background: #000;
+            padding: 3px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        form input {
+            border: 0;
+            padding: 10px;
+            width: 90%;
+            margin-right: .5%;
+        }
+
+        form button {
+            width: 9%;
+            background: rgb(130, 224, 255);
+            border: none;
+            padding: 10px;
+        }
+
+        #messages {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #messages li {
+            padding: 5px 10px;
+        }
+
+        #messages li:nth-child(odd) {
+            background: #eee;
+        }
+    </style>
+</head>
+<body>
+<ul id="messages"></ul>
+<form action="">
+    <input id="m" autocomplete="off"/>
+    <button>Send</button>
+</form>
+
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+    var socket = io.connect('http://localhost:3000/log/socket');
+    $('form').submit(function () {
+        socket.emit('chat message', {token: 'abc123', message: $('#m').val()});
+        $('#m').val('');
+        return false;
+    });
+
+    setInterval(function() {
+        socket.emit('log', {
+            source: {
+                serviceClass: "tile-server",
+                service: "alerts-and-obs",
+                serverId: "alerts-and-obs-v1111-4wbd9",
+                meta: {
+                    version: "v1111"
+                }
+            },
+            message: {
+                type: "HTTP_REQUEST",
+                requestId: "f788cb65-c64d-4160-a137-fa420bfeee12",
+                requestUrl: "",
+                startTime: 143235435354,
+                duration: 0.12132,
+                responseCode: 200,
+                contentLength: 34325,
+                additionalHeaders: {},
+                queryParams: {
+                    tileSet: "radar"
+                },
+                meta: {}
+            }
+        });
+    }, 1000);
+</script>
+</body>
+</html>
