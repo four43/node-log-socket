@@ -51,48 +51,24 @@
     </style>
 </head>
 <body>
+<h1>Messages</h1>
 <ul id="messages"></ul>
-<form action="">
-    <input id="m" autocomplete="off"/>
-    <button>Send</button>
-</form>
 
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
-    var socket = io.connect('http://localhost:3000/log/socket');
-    $('form').submit(function () {
-        socket.emit('chat message', {token: 'abc123', message: $('#m').val()});
-        $('#m').val('');
-        return false;
+    $('#messages').append($('<li>').text("Connecting to socket..."));
+    var socket = io('/log/socket');
+    socket.emit('authentication', {clientKey: 'abc123'});
+    socket.on('authenticated', function() {
+        socket.on('log', function(message) {
+            $('#messages').append($('<li>').text(JSON.stringify(message)));
+        });
     });
 
-    setInterval(function() {
-        socket.emit('log', {
-            source: {
-                serviceClass: "tile-server",
-                service: "alerts-and-obs",
-                serverId: "alerts-and-obs-v1111-4wbd9",
-                meta: {
-                    version: "v1111"
-                }
-            },
-            message: {
-                type: "HTTP_REQUEST",
-                requestId: "f788cb65-c64d-4160-a137-fa420bfeee12",
-                requestUrl: "",
-                startTime: 143235435354,
-                duration: 0.12132,
-                responseCode: 200,
-                contentLength: 34325,
-                additionalHeaders: {},
-                queryParams: {
-                    tileSet: "radar"
-                },
-                meta: {}
-            }
-        });
-    }, 1000);
+    socket.on('unauthorized', function(err){
+        console.error("There was an error with the authentication:", err.message);
+    });
 </script>
 </body>
 </html>

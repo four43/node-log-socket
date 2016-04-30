@@ -1,7 +1,8 @@
 var httpMicroServiceExample = {
 	source: {
-		serviceClass: "tile-server",
-		service: "alerts-and-obs",
+		appId: "maps",
+		service: "tile-server",
+		serviceGroup: "alerts-and-obs",
 		serverId: "alerts-and-obs-v1111-4wbd9",
 		meta: {
 			version: "v1111"
@@ -9,8 +10,9 @@ var httpMicroServiceExample = {
 	},
 	message: {
 		type: "HTTP_REQUEST",
-		requestId: "f788cb65-c64d-4160-a137-fa420bfeee12",
-		requestUrl: "",
+		requestId: "some-guid-c64d-4160-a137-fa420bfeee12",
+		method: "GET",
+		requestUrl: "http://localhost/hello/world?foo=bar",
 		startTime: 143235435354,
 		duration: 0.12132,
 		responseCode: 200,
@@ -21,6 +23,9 @@ var httpMicroServiceExample = {
 		queryParams: {
 			tileSet: "radar"
 		},
+		requestBody: {
+
+		},
 		meta: {
 
 		}
@@ -29,8 +34,9 @@ var httpMicroServiceExample = {
 
 var generalLog = {
 	source: {
-		serviceClass: "tile-server",
-		service: "alerts-and-obs",
+		appId: "maps",
+		service: "tile-server",
+		serviceGroup: "alerts-and-obs",
 		serverId: "alerts-and-obs-v1111-4wbd9",
 		meta: {
 			version: "v1111"
@@ -49,8 +55,9 @@ var generalLog = {
 
 var eventLog = {
 	source: {
-		serviceClass: "tile-server",
-		service: "alerts-and-obs",
+		appId: "maps",
+		service: "tile-server",
+		serviceGroup: "alerts-and-obs",
 		serverId: "alerts-and-obs-v1111-4wbd9",
 		meta: {
 			version: "v1111"
