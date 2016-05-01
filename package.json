@@ -19,11 +19,13 @@
     "debug": "^2.2.0",
     "express": "^4.13.4",
     "ioredis": "^1.15.1",
-    "mongoose": "^4.4.13",
+    "lodash": "^4.11.1",
+    "mongodb": "^2.1.18",
     "node-oauth2-server": "^2.4.0",
     "simple-service-manager": "^1.1.0",
     "socket.io": "^1.4.5",
-    "socketio-auth": "0.0.5"
+    "socketio-auth": "0.0.5",
+    "validator": "^5.2.0"
   },
   "devDependencies": {
     "guid": "0.0.12",

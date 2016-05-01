@@ -1,4 +1,6 @@
 Log Socket
 ===========
 
-Logging via a web socket. There it is.
+Logging and display via WebSocket.
+
+Incoming log messages have a source and details about the log entry. 

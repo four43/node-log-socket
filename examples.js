@@ -8,8 +8,8 @@ var httpMicroServiceExample = {
 			version: "v1111"
 		}
 	},
-	message: {
-		type: "HTTP_REQUEST",
+	details: {
+		type: "HTTP",
 		requestId: "some-guid-c64d-4160-a137-fa420bfeee12",
 		method: "GET",
 		requestUrl: "http://localhost/hello/world?foo=bar",
@@ -19,9 +19,6 @@ var httpMicroServiceExample = {
 		contentLength: 34325,
 		additionalHeaders: {
 
-		},
-		queryParams: {
-			tileSet: "radar"
 		},
 		requestBody: {
 
@@ -42,7 +39,7 @@ var generalLog = {
 			version: "v1111"
 		}
 	},
-	message: {
+	details: {
 		type: "GENERAL",
 		level: 0,
 		message: "Er mah gerd",
@@ -63,7 +60,7 @@ var eventLog = {
 			version: "v1111"
 		}
 	},
-	message: {
+	details: {
 		type: "EVENT",
 		event: "MyEvent",
 		seriesId: "f788cb65-c64d-4160-a137-fa420bfeee12",
