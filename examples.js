@@ -8,8 +8,8 @@ var httpMicroServiceExample = {
 			version: "v1111"
 		}
 	},
+	type: "HTTP",
 	details: {
-		type: "HTTP",
 		requestId: "some-guid-c64d-4160-a137-fa420bfeee12",
 		method: "GET",
 		requestUrl: "http://localhost/hello/world?foo=bar",
@@ -39,8 +39,8 @@ var generalLog = {
 			version: "v1111"
 		}
 	},
+	type: "GENERAL",
 	details: {
-		type: "GENERAL",
 		level: 0,
 		message: "Er mah gerd",
 		time: 143235435354,
@@ -60,8 +60,8 @@ var eventLog = {
 			version: "v1111"
 		}
 	},
+	type: "EVENT",
 	details: {
-		type: "EVENT",
 		event: "MyEvent",
 		seriesId: "f788cb65-c64d-4160-a137-fa420bfeee12",
 		meta: {

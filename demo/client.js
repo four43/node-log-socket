@@ -32,18 +32,16 @@ function sendLog() {
 				version: "v1111"
 			}
 		},
-		message: {
-			type: "HTTP_REQUEST",
+		type: "HTTP",
+		details: {
 			requestId: Guid.create(),
-			requestUrl: "",
+			method: 'GET',
+			requestUrl: "http://localhost/hello/world?foo=bar",
 			startTime: Date.now(),
 			duration: Math.random() * 0.5,
 			responseCode: 200,
 			contentLength: Math.round(100 + Math.random() * 1000),
 			additionalHeaders: {},
-			queryParams: {
-				tileSet: "radar"
-			},
 			meta: {}
 		}
 	});

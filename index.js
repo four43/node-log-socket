@@ -8,6 +8,8 @@ const bodyParser = require('body-parser'),
 	redisSocketIo = require('socket.io-redis'),
 	sm = require('./lib/serviceManager');
 
+const eventHub = sm.get('eventHub');
+const logEntryParser = sm.get('logEntryParser');
 
 // Init distributed sockets
 io.adapter(redisSocketIo(sm.get('config').redis));
@@ -38,7 +40,9 @@ sm.get('mongoDb')
 
 				socket.on('log', function (msg) {
 					console.log('[socket][log]: ' + JSON.stringify(msg));
-					socket.broadcast.emit('log', msg);
+					const logEntry = logEntryParser(msg);
+					socket.broadcast.emit('log', logEntry);
+					eventHub.emit('log', logEntry);
 				});
 
 				socket.on('disconnect', function () {
